@@ -1,6 +1,9 @@
+import { TokenService } from './../../Services/token.service';
+import { JarwisService } from './../../Services/jarwis.service';
 
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-login',
@@ -16,17 +19,28 @@ export class LoginComponent implements OnInit {
 
   public error = null;
 
-  constructor(private http: HttpClient) { }
+  constructor(
+    private Jarwise: JarwisService,
+    private Token: TokenService,
+    private router: Router
+    ) { }
 
 
+  // tslint:disable-next-line: typedef
   onSubmit() {
-    return this.http.post('http://127.0.0.1:8000/api/login', this.form).subscribe(
-      data => console.log(data),
+    this.Jarwise.login(this.form).subscribe(
+      data => this.handleResponse(data),
       error => this.handleError(error)
     );
-
   }
 
+  handleResponse(data){
+    //console.log('data='+data.access_token);
+    this.Token.handle(data.access_token);
+    this.router.navigateByUrl('/profile');
+  }
+
+  // tslint:disable-next-line: typedef
   handleError(error){
     this.error = error.error.error;
   }

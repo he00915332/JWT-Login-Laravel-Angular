@@ -1,3 +1,6 @@
+import { AuthService } from './Services/auth.service';
+import { TokenService } from './Services/token.service';
+import { JarwisService } from './Services/jarwis.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -28,7 +31,11 @@ import { HttpClientModule } from '@angular/common/http';
     FormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [
+    JarwisService,
+    TokenService,
+    AuthService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
