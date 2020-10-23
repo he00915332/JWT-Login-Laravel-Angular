@@ -8,8 +8,10 @@ Route::group([
 
     Route::post('login', 'App\Http\Controllers\AuthController@login');
     Route::post('signup', 'App\Http\Controllers\AuthController@signup');
+    /*
     Route::post('logout', 'AuthController@logout');
     Route::post('refresh', 'AuthController@refresh');
-    Route::post('me', 'AuthController@me');
+    Route::post('me', 'AuthController@me');*/
+    Route::post('sendPasswordResetLink', 'App\Http\Controllers\ResetPasswordController@sendEmail');
 
 });

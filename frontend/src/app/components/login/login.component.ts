@@ -1,3 +1,4 @@
+import { AuthService } from './../../Services/auth.service';
 import { TokenService } from './../../Services/token.service';
 import { JarwisService } from './../../Services/jarwis.service';
 
@@ -22,7 +23,8 @@ export class LoginComponent implements OnInit {
   constructor(
     private Jarwise: JarwisService,
     private Token: TokenService,
-    private router: Router
+    private router: Router,
+    private Auth: AuthService
     ) { }
 
 

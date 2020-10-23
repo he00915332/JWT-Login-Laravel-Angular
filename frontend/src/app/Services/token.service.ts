@@ -44,14 +44,13 @@ export class TokenService {
   payload(token){
     const payload =  token.split('.')[1];
     return this.decode(payload);
-
   }
 
   decode(payload){
     return JSON.parse(atob(payload));
   }
 
-  loggeIn(){
+  loggedIn(){
     return this.isValid();
   }
 
