@@ -1,5 +1,7 @@
 <?php
 
+
+
 Route::group([
 
     'middleware' => 'api'
@@ -13,5 +15,5 @@ Route::group([
     Route::post('refresh', 'AuthController@refresh');
     Route::post('me', 'AuthController@me');*/
     Route::post('sendPasswordResetLink', 'App\Http\Controllers\ResetPasswordController@sendEmail');
-
+    Route::post('resetPassword', 'App\Http\Controllers\ChangePasswordController@process');
 });
